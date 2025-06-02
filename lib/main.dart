@@ -1,3 +1,4 @@
+import 'package:electronics_app/features/authentication/presentation/views/signup_view.dart';
 import 'package:flutter/material.dart';
 
 import 'core/utils/constants.dart';
@@ -16,11 +17,7 @@ class ElectronicsApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: Constants.kPoppins),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Electronics App'),),
-        body: const Text('Flutter Demo Home Page'),
-      ),
+      home: SignupView(),
     );
   }
 }

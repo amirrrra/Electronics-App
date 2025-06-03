@@ -3,6 +3,7 @@ import 'package:electronics_app/core/widgets/app_bar_widget.dart';
 import 'package:electronics_app/core/widgets/button_widget.dart';
 import 'package:electronics_app/core/widgets/textfield_widget.dart';
 import 'package:electronics_app/features/authentication/presentation/views/widgets/condition_widget.dart';
+import 'package:electronics_app/features/authentication/presentation/views/widgets/password_field_widget.dart';
 import 'package:electronics_app/features/authentication/presentation/views/widgets/switch_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -40,8 +41,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                   hint: 'Phone Number',
                   textInputType: TextInputType.phone,
                 ),
-                TextfieldWidget(hint: 'Password', obscureText: true),
-                TextfieldWidget(hint: 'Confirm Password', obscureText: true),
+                PasswordFieldWidget(hint: 'Password'),
+                PasswordFieldWidget(hint: 'Confirm Password'),
                 ConditionWidget(
                   onChecked: (value) {
                     setState(() {

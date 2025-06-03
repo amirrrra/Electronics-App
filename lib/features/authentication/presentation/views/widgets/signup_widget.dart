@@ -3,6 +3,7 @@ import 'package:electronics_app/core/widgets/app_bar_widget.dart';
 import 'package:electronics_app/core/widgets/button_widget.dart';
 import 'package:electronics_app/core/widgets/textfield_widget.dart';
 import 'package:electronics_app/features/authentication/presentation/views/widgets/condition_widget.dart';
+import 'package:electronics_app/features/authentication/presentation/views/widgets/switch_widget.dart';
 import 'package:flutter/material.dart';
 
 class SignupWidget extends StatefulWidget {
@@ -25,7 +26,6 @@ class _SignupWidgetState extends State<SignupWidget> {
           child: Form(
             key: _key,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 16,
               children: [
                 const AppBarWidget(title: 'Sign Up', isBack: false),
@@ -50,8 +50,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                   },
                   isTermsAccepted: isTermsAccepted,
                 ),
-                SizedBox(height: 4),
-                ButtonWidget(text:'Sign Up'),
+                
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: ButtonWidget(text:'Sign Up'),
+                ),
+                SwitchWidget(qText: 'Already have an account', text: 'Log In', onTap: (){}),
+
               ],
             ),
           ),

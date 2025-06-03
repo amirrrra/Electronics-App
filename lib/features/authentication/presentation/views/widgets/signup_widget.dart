@@ -1,7 +1,7 @@
-import 'package:electronics_app/core/utils/app_colors.dart';
 import 'package:electronics_app/core/utils/constants.dart';
 import 'package:electronics_app/core/widgets/app_bar_widget.dart';
 import 'package:electronics_app/core/widgets/textfield_widget.dart';
+import 'package:electronics_app/features/authentication/presentation/views/widgets/condition_widget.dart';
 import 'package:flutter/material.dart';
 
 class SignupWidget extends StatefulWidget {
@@ -13,6 +13,7 @@ class SignupWidget extends StatefulWidget {
 
 class _SignupWidgetState extends State<SignupWidget> {
   final _key = GlobalKey<FormState>();
+  bool isTermsAccepted = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,24 +28,27 @@ class _SignupWidgetState extends State<SignupWidget> {
               spacing: 16,
               children: [
                 const AppBarWidget(title: 'Sign Up', isBack: false),
-                Row(
-                  spacing: 16,
-                  children: [
-                    Expanded(child: TextfieldWidget(hint: 'First Name')),
-                    Expanded(child: TextfieldWidget(hint: 'Last Name')),
-                  ],
-                ),
+                TextfieldWidget(hint: 'First Name'),
+                TextfieldWidget(hint: 'Last Name'),
                 TextfieldWidget(
                   hint: 'Email',
                   textInputType: TextInputType.emailAddress,
                 ),
+                TextfieldWidget(hint: 'Address'),
                 TextfieldWidget(
                   hint: 'Phone Number',
                   textInputType: TextInputType.phone,
                 ),
                 TextfieldWidget(hint: 'Password', obscureText: true),
                 TextfieldWidget(hint: 'Confirm Password', obscureText: true),
-                TextfieldWidget(hint: 'Address'),
+                ConditionWidget(
+                  onChecked: (value) {
+                    setState(() {
+                      isTermsAccepted = value;
+                    });
+                  },
+                  isTermsAccepted: isTermsAccepted,
+                ),
               ],
             ),
           ),

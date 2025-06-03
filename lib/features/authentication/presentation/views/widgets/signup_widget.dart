@@ -1,3 +1,4 @@
+import 'package:electronics_app/core/utils/app_routes.dart';
 import 'package:electronics_app/core/utils/constants.dart';
 import 'package:electronics_app/core/widgets/app_bar_widget.dart';
 import 'package:electronics_app/core/widgets/button_widget.dart';
@@ -51,13 +52,17 @@ class _SignupWidgetState extends State<SignupWidget> {
                   },
                   isTermsAccepted: isTermsAccepted,
                 ),
-                
+
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: ButtonWidget(text:'Sign Up'),
+                  child: ButtonWidget(text: 'Sign Up'),
                 ),
-                SwitchWidget(qText: 'Already have an account', text: 'Log In', onTap: (){}),
-
+                SwitchWidget(
+                  qText: 'Already have an account',
+                  text: 'Log In',
+                  onTap: () =>
+                      Navigator.pushReplacementNamed(context, AppRoutes.login),
+                ),
               ],
             ),
           ),

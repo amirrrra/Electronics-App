@@ -1,6 +1,4 @@
-import 'package:electronics_app/features/authentication/presentation/views/signin_view.dart';
-import 'package:electronics_app/features/authentication/presentation/views/signup_view.dart';
-import 'package:electronics_app/features/authentication/presentation/views/widgets/signin_widget.dart';
+import 'package:electronics_app/core/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
 import 'core/utils/constants.dart';
@@ -16,10 +14,10 @@ class ElectronicsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: Constants.kPoppins),
-      home: SigninView(),
+      onGenerateRoute: AppRoutes.onGenerateRoute,
+      initialRoute: AppRoutes.login,
     );
   }
 }

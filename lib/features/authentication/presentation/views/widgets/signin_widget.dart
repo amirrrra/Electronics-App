@@ -1,3 +1,4 @@
+import 'package:electronics_app/core/utils/app_routes.dart';
 import 'package:electronics_app/core/utils/constants.dart';
 import 'package:electronics_app/core/widgets/app_bar_widget.dart';
 import 'package:electronics_app/core/widgets/button_widget.dart';
@@ -33,7 +34,8 @@ class SigninWidget extends StatelessWidget {
               SwitchWidget(
                 qText: 'Don\'t have an account',
                 text: 'Sign up',
-                onTap: () {},
+                onTap: () =>
+                    Navigator.pushReplacementNamed(context, AppRoutes.signup),
               ),
             ],
           ),

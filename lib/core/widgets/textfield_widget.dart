@@ -9,6 +9,7 @@ class TextfieldWidget extends StatelessWidget {
   final TextInputType? textInputType;
   final bool obscureText;
   final void Function(String?)? onSaved;
+  final String? Function(String?)? validator;
 
   const TextfieldWidget({
     super.key,
@@ -17,18 +18,17 @@ class TextfieldWidget extends StatelessWidget {
     this.textInputType,
     this.obscureText = false,
     this.onSaved,
+    this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       onSaved: onSaved,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return '$hint is required';
-        }
-        return null;
-      },
+      validator:
+          validator ??
+          (val) => val == null || val.isEmpty ? '$hint is required' : null,
+
       onTapOutside: (pointer) {
         FocusManager.instance.primaryFocus?.unfocus();
       },

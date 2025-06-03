@@ -20,6 +20,14 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
       obscureText: isObscure,
       hint: widget.hint,
       textInputType: TextInputType.visiblePassword,
+      validator: (value) {
+        final passwordRegex = RegExp(
+          r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!?]).{8,}$',
+        );
+        return !passwordRegex.hasMatch(value!)
+            ? 'Password must be 8+ chars, include upper, lower, number, and special char'
+            : null;
+      },
       suffixIcon: IconButton(
         onPressed: () {
           setState(() {

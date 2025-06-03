@@ -1,5 +1,6 @@
 import 'package:electronics_app/core/utils/constants.dart';
 import 'package:electronics_app/core/widgets/app_bar_widget.dart';
+import 'package:electronics_app/core/widgets/button_widget.dart';
 import 'package:electronics_app/core/widgets/textfield_widget.dart';
 import 'package:electronics_app/features/authentication/presentation/views/widgets/condition_widget.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                   },
                   isTermsAccepted: isTermsAccepted,
                 ),
+                SizedBox(height: 4),
+                ButtonWidget(text:'Sign Up'),
               ],
             ),
           ),

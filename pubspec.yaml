@@ -9,6 +9,7 @@ environment:
   sdk: ^3.9.0-172.0.dev
 
 dependencies:
+  carousel_slider: ^5.0.0
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
   dio: ^5.8.0+1
@@ -20,6 +21,7 @@ dependencies:
   http: ^1.4.0
   modal_progress_hud_nsn: ^0.5.1
   shared_preferences: ^2.5.3
+  smooth_page_indicator: ^1.2.1
 
 dev_dependencies:
   flutter_lints: ^5.0.0

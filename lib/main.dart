@@ -15,7 +15,8 @@ class ElectronicsApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: Constants.kPoppins),
       onGenerateRoute: AppRoutes.onGenerateRoute,
-      initialRoute: AppRoutes.login,
+      // initialRoute: AppRoutes.login,
+      initialRoute: AppRoutes.home,
     );
   }
 }

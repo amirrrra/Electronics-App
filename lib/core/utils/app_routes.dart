@@ -1,6 +1,6 @@
 import 'package:electronics_app/features/authentication/presentation/views/login_view.dart';
 import 'package:electronics_app/features/authentication/presentation/views/signup_view.dart';
-import 'package:electronics_app/features/home/home_view.dart';
+import 'package:electronics_app/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppRoutes {

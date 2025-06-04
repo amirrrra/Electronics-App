@@ -15,7 +15,7 @@ class ProgressHudWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ModalProgressHUD(
       inAsyncCall: inAsyncCall,
-      color: AppColors.green,
+      progressIndicator: CircularProgressIndicator(color: AppColors.primaryColor),
       child: child,
     );
   }

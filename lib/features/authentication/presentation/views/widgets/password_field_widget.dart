@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 class PasswordFieldWidget extends StatefulWidget {
   final String hint;
   final void Function(String?)? onSaved;
-
-  const PasswordFieldWidget({super.key, required this.hint, this.onSaved});
+  final String? Function(String?)? validator;
+  const PasswordFieldWidget({
+    super.key,
+    required this.hint,
+    this.onSaved,
+    this.validator,
+  });
 
   @override
   State<PasswordFieldWidget> createState() => _PasswordFieldWidgetState();
@@ -20,14 +25,7 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
       obscureText: isObscure,
       hint: widget.hint,
       textInputType: TextInputType.visiblePassword,
-      validator: (value) {
-        final passwordRegex = RegExp(
-          r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!?]).{8,}$',
-        );
-        return !passwordRegex.hasMatch(value!)
-            ? 'Password must be 8+ chars, include upper, lower, number, and special char'
-            : null;
-      },
+      validator: widget.validator,
       suffixIcon: IconButton(
         onPressed: () {
           setState(() {

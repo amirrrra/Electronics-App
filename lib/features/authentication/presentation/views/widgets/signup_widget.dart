@@ -87,11 +87,22 @@ class _SignupWidgetState extends State<SignupWidget> {
                   onSaved: (value) {
                     password = value!;
                   },
+                  validator: (value) {
+                    final passwordRegex = RegExp(
+                      r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!?]).{8,}$',
+                    );
+                    return !passwordRegex.hasMatch(value!)
+                        ? 'Password must be 8+ chars, include upper, lower, number, and special char'
+                        : null;
+                  },
                 ),
                 PasswordFieldWidget(
                   hint: 'Confirm Password',
                   onSaved: (value) {
                     confirmPassword = value!;
+                  },
+                  validator: (value) {
+                    return value != password ? 'Passwords do not match' : null;
                   },
                 ),
                 ConditionWidget(
@@ -108,8 +119,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                   child: ButtonWidget(
                     text: 'Sign Up',
                     onPressed: () {
+                      _key.currentState!.save();
                       if (_key.currentState!.validate()) {
-                        _key.currentState!.save();
                         var userModel = UserModel(
                           firstName: fname,
                           lastName: lname,

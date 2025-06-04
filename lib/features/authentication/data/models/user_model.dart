@@ -9,14 +9,14 @@ class UserModel {
   final String? password;
 
   UserModel({
-    this.id,
     required this.firstName,
     required this.lastName,
     required this.phone,
     required this.address,
     required this.email,
+    this.id,
     this.createdAt,
-     this.password,
+    this.password,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {

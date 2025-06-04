@@ -1,5 +1,4 @@
 import 'package:electronics_app/core/utils/app_routes.dart';
-import 'package:electronics_app/features/authentication/presentation/views/k.dart';
 import 'package:flutter/material.dart';
 import 'core/utils/constants.dart';
 
@@ -17,7 +16,6 @@ class ElectronicsApp extends StatelessWidget {
       theme: ThemeData(fontFamily: Constants.kPoppins),
       onGenerateRoute: AppRoutes.onGenerateRoute,
       initialRoute: AppRoutes.login,
-      // home: RegisterScreen(),
     );
   }
 }

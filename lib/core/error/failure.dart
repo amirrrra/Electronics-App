@@ -33,13 +33,32 @@ class ServerFailure extends Failure {
     }
   }
 
-  factory ServerFailure.fromDioResponse(int? statusCode, response) {
-    if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(errMessage: response['error']['message']);
-    } else if (statusCode == 404) {
-      return ServerFailure(errMessage: '404 not found');
-    } else {
-      return ServerFailure(errMessage: 'Unexpected error, please try again');
+  factory ServerFailure.fromDioResponse(int? statusCode, Response? response) {
+    try {
+      final responseData = response?.data;
+
+      if (responseData is Map<String, dynamic>) {
+        if (responseData.containsKey('data') &&
+            responseData['data'] is String &&
+            responseData['data'].toString().isNotEmpty) {
+          return ServerFailure(errMessage: responseData['data']);
+        }
+
+        if (responseData.containsKey('message') &&
+            responseData['message'] is String) {
+          return ServerFailure(errMessage: responseData['message']);
+        }
+      }
+
+      if (statusCode == 404) {
+        return ServerFailure(errMessage: '404 Not Found');
+      } else if (statusCode == 500) {
+        return ServerFailure(errMessage: 'Internal Server Error');
+      } else {
+        return ServerFailure(errMessage: 'Unexpected error, please try again');
+      }
+    } catch (e) {
+      return ServerFailure(errMessage: 'Failed to parse error message');
     }
   }
 }

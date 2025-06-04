@@ -21,11 +21,15 @@ class LoginConsumerWidget extends StatelessWidget {
       },
       listener: (context, state) {
         if (state is SuccessLoginState) {
-          showSnackbarHelper(context: context, message: 'Login Success');
-          Navigator.pushReplacementNamed(context, AppRoutes.home);
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            showSnackbarHelper(context: context, message: 'Login successfully');
+            Navigator.pushReplacementNamed(context, AppRoutes.home);
+          });
         }
         if (state is FailureLoginState) {
-          showSnackbarHelper(context: context, message: state.errorMessage);
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            showSnackbarHelper(context: context, message: state.errorMessage);
+          });
         }
       },
     );

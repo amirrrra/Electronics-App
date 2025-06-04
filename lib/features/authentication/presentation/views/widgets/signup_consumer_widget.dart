@@ -21,11 +21,18 @@ class SignupConsumerWidget extends StatelessWidget {
       },
       listener: (context, state) {
         if (state is SuccessSignupState) {
-          showSnackbarHelper(context: context, message: 'signup Success');
-          Navigator.pushReplacementNamed(context, AppRoutes.home);
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            showSnackbarHelper(
+              context: context,
+              message: 'The account was created successfully',
+            );
+            Navigator.pushReplacementNamed(context, AppRoutes.home);
+          });
         }
         if (state is FailureSignupState) {
-          showSnackbarHelper(context: context, message: state.errorMessage);
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            showSnackbarHelper(context: context, message: state.errorMessage);
+          });
         }
       },
     );

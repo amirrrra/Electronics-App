@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'products_state.dart';
 
-class ProductsCubit extends Cubit<ProductsState> {
-  ProductsCubit(this._productsRepo) : super(ProductsInitialState());
+class CategoriesCubit extends Cubit<ProductsState> {
+  CategoriesCubit(this._productsRepo) : super(ProductsInitialState());
   final ProductsRepo _productsRepo;
 
   Future<void> fetchAllProducts() async {

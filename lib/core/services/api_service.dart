@@ -3,12 +3,13 @@ import 'package:dio/dio.dart';
 class ApiService {
   Dio dio = Dio();
 
-  final String _baseUrl = 'https://ib.jamalmoallart.com/api/v2/';
+  final String _baseUrl = 'https://ib.jamalmoallart.com/api/';
 
-  Future<Map<String, dynamic>> get(String endpoint) async {
-    var response = await dio.get('$_baseUrl$endpoint');
+  Future<List<dynamic>> get(String endpoint) async {
+    var response = await dio.get('${_baseUrl}v1/$endpoint');
     if (response.statusCode == 200) {
       return response.data;
+      
     } else {
       throw Exception("Error occurred with response ${response.statusCode}");
     }
@@ -19,7 +20,7 @@ class ApiService {
     Map<String, dynamic> data,
   ) async {
     var response = await dio.post(
-      _baseUrl + endpoint,
+     '${_baseUrl}v2/$endpoint',
       data: data,
       options: Options(
         headers: {

@@ -1,10 +1,22 @@
 import 'package:electronics_app/core/utils/app_colors.dart';
 import 'package:electronics_app/core/utils/app_styles.dart';
+import 'package:electronics_app/features/home/presentation/cubits/products_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductCardWidget extends StatelessWidget {
+class ProductCardWidget extends StatefulWidget {
   const ProductCardWidget({super.key});
 
+  @override
+  State<ProductCardWidget> createState() => _ProductCardWidgetState();
+}
+
+class _ProductCardWidgetState extends State<ProductCardWidget> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<ProductsCubit>(context).fetchAllProducts();
+  }
   @override
   Widget build(BuildContext context) {
     return Stack(

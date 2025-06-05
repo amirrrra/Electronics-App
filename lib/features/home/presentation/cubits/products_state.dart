@@ -7,9 +7,9 @@ class ProductsInitialState extends ProductsState {}
 class ProductsLoadingState extends ProductsState {}
 
 class ProductsSuccessState extends ProductsState {
-  final ProductModel productModel;
+  final List<ProductModel> products;
 
-  ProductsSuccessState({required this.productModel});
+  ProductsSuccessState({required this.products});
 }
 
 class ProductsFailureState extends ProductsState {

@@ -14,11 +14,11 @@ class ProductsBuilderWidget extends StatelessWidget {
       builder: (context, state) {
         print(state.toString());
         if (state is ProductsSuccessState) {
-          return ProductsGridWidget();
+          return ProductsGridWidget(products: state.products,);
         } else if (state is ProductsFailureState) {
           return SliverToBoxAdapter(child: ErrorWidget(state.errorMessage));
-        } else {
-          return Skeletonizer.sliver(child: ProductsGridWidget());
+        } else  {
+          return Skeletonizer.sliver(child: ProductsGridWidget(products: [],));
         }
       },
     );

@@ -17,7 +17,7 @@ class ElectronicsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductsCubit(ProductsRepoImpl(ApiService())),
+      create: (context) => ProductsCubit(ProductsRepoImpl(ApiService()))..fetchAllProducts(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

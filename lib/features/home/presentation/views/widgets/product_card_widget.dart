@@ -1,22 +1,12 @@
 import 'package:electronics_app/core/utils/app_colors.dart';
 import 'package:electronics_app/core/utils/app_styles.dart';
-import 'package:electronics_app/features/home/presentation/cubits/products_cubit.dart';
+import 'package:electronics_app/features/home/data/models/product_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductCardWidget extends StatefulWidget {
-  const ProductCardWidget({super.key});
+class ProductCardWidget extends StatelessWidget {
+  final ProductModel productModel;
+  const ProductCardWidget({super.key, required this.productModel});
 
-  @override
-  State<ProductCardWidget> createState() => _ProductCardWidgetState();
-}
-
-class _ProductCardWidgetState extends State<ProductCardWidget> {
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<ProductsCubit>(context).fetchAllProducts();
-  }
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -35,19 +25,34 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
             children: [
               ClipOval(
                 child: Image.network(
-                  'https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_1280.jpg',
+                  productModel.image,
                   fit: BoxFit.cover,
                   width: 84,
                   height: 84,
+                  errorBuilder: (context, error, stackTrace) => ClipOval(
+                    child: Image.network(
+                      'https://btech.com/media/catalog/product/cache/4709f4e5925590e2003d78a7a1e77edb/b/d/bddcd22b45aa0a229167c454a79d5afdc01e6f1a0d6f71a63f541d07f72f33fa.jpeg',
+                      fit: BoxFit.cover,
+                      width: 84,
+                      height: 84,
+                    ),
+                  ),
                 ),
               ),
               SizedBox(height: 8),
               Text(
-                '\$8.00',
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
+                '\$${productModel.price}',
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 12,
+                  color: AppColors.customColor,
+                ),
               ),
 
-              Text('Fresh Peach', style: AppStyles.bold16),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(productModel.name, style: AppStyles.semiBold14),
+              ),
               Divider(height: 24, color: AppColors.greyE6),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +61,7 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                   const Icon(
                     Icons.shopping_bag_outlined,
                     size: 15,
-                    color: AppColors.primaryColor,
+                    color: AppColors.customColor,
                   ),
                   Text(
                     'Add to cart',

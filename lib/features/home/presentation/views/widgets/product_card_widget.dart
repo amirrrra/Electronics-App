@@ -29,12 +29,12 @@ class ProductCardWidget extends StatelessWidget {
                   height: 84,
                 ),
               ),
-        
+              SizedBox(height: 8),
               Text(
                 '\$8.00',
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
               ),
-        
+
               Text('Fresh Peach', style: AppStyles.bold16),
               Divider(height: 24, color: AppColors.greyE6),
               Row(
@@ -48,10 +48,7 @@ class ProductCardWidget extends StatelessWidget {
                   ),
                   Text(
                     'Add to cart',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 12,
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
                   ),
                 ],
               ),

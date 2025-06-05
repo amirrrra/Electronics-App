@@ -26,7 +26,7 @@ class CategoryWidget extends StatelessWidget {
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
         SizedBox(
-          height: 200,
+          height: 80,
           child: ListView.separated(
             itemCount: categoriesItems.length,
             scrollDirection: Axis.horizontal,

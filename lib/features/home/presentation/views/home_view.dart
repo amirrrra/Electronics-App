@@ -1,6 +1,7 @@
 import 'package:electronics_app/core/utils/constants.dart';
 import 'package:electronics_app/features/home/presentation/views/widgets/carousel_widget.dart';
 import 'package:electronics_app/features/home/presentation/views/widgets/product_card_widget.dart';
+import 'package:electronics_app/features/home/presentation/views/widgets/products_grid_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/category_widget.dart';
@@ -14,9 +15,32 @@ class HomeView extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: Constants.horizPadding20,
-          child: Column(
-            spacing: 16,
-            children: [CarouselWidget(), CategoryWidget(),ProductCardWidget()],
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  spacing: 32,
+                  children: [
+                    CarouselWidget(),
+                    CategoryWidget(),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Featured products",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ProductsGridWidget(),
+            ],
           ),
         ),
       ),

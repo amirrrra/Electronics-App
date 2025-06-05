@@ -1,3 +1,4 @@
+import 'package:electronics_app/features/home/data/models/product_model.dart';
 import 'package:electronics_app/features/home/presentation/cubits/products_cubit.dart';
 import 'package:electronics_app/features/home/presentation/cubits/products_state.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +13,26 @@ class ProductsBuilderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsCubit, ProductsState>(
       builder: (context, state) {
-        print(state.toString());
         if (state is ProductsSuccessState) {
-          return ProductsGridWidget(products: state.products,);
+          return ProductsGridWidget(products: state.products);
         } else if (state is ProductsFailureState) {
           return SliverToBoxAdapter(child: ErrorWidget(state.errorMessage));
-        } else  {
-          return Skeletonizer.sliver(child: ProductsGridWidget(products: [],));
+        } else {
+          final dummyProducts = List.generate(
+            10,
+            (index) => ProductModel(
+              id: 0,
+              name: 'Loading...',
+              category: 'Dummy',
+              description: 'Loading description...',
+              price: 0.0,
+              discount: 0,
+              image: '',
+            ),
+          );
+          return Skeletonizer.sliver(
+            child: ProductsGridWidget(products: dummyProducts),
+          );
         }
       },
     );

@@ -1,27 +1,50 @@
-// import 'package:electronics_app/core/widgets/app_bar_widget.dart';
-// import 'package:electronics_app/features/home/data/models/product_model.dart';
-// import 'package:electronics_app/features/home/presentation/views/widgets/product_details_widget.dart';
-// import 'package:flutter/material.dart';
+import 'package:electronics_app/features/home/data/models/product_model.dart';
+import 'package:electronics_app/features/home/presentation/cubits/category_products_cubit.dart';
+import 'package:electronics_app/features/home/presentation/cubits/category_products_state.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
+import 'widgets/products_category_widget.dart';
 
-// import 'widgets/products_grid_widget.dart';
+class ProductsCategoryView extends StatelessWidget {
+  const ProductsCategoryView({super.key});
 
-// class ProductsCategoryView extends StatelessWidget {
-//   final List<ProductModel> products;
-//   const ProductsCategoryView({super.key, required this.products});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SingleChildScrollView(
-//         child: SafeArea(
-//           child: Column(
-//             children: const [
-//               AppBarWidget(title: , isBack: true),
-//               ProductsGridWidget(products: [],),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    final category = ModalRoute.of(context)!.settings.arguments as String;
+    return Scaffold(
+      appBar: AppBar(title: Text(category)),
+      body: BlocBuilder<CategoryProductsCubit, CategoryProductsState>(
+        builder: (BuildContext context, state) {
+          if (state is CategoryProductsSuccessState) {
+            return ProductsCategoryWidget(
+              products: state.products,
+              category: category,
+            );
+          } else if (state is CategoryProductsFailureState) {
+            return ErrorWidget(state.errorMessage);
+          } else {
+            final dummyProducts = List.generate(
+              10,
+              (index) => ProductModel(
+                id: 0,
+                name: 'Loading...',
+                category: 'Dummy',
+                description: 'Loading description...',
+                price: 0.0,
+                discount: 0,
+                image: '',
+              ),
+            );
+            return Skeletonizer(
+              child: ProductsCategoryWidget(
+                products: dummyProducts,
+                category: category,
+              ),
+            );
+          }
+        },
+      ),
+    );
+  }
+}

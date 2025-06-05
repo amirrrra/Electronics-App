@@ -16,7 +16,6 @@ class ProductsRepoImpl extends ProductsRepo {
       final products = result.map((e) => ProductModel.fromJson(e)).toList();
       return Right(products);
     } on Exception catch (e) {
-      print(e);
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
@@ -45,6 +44,7 @@ class ProductsRepoImpl extends ProductsRepo {
     try {
       var result = await _apiService.get('products/category/$category');
       final products = result.map((e) => ProductModel.fromJson(e)).toList();
+
       return Right(products);
     } on Exception catch (e) {
       if (e is DioException) {

@@ -1,4 +1,5 @@
 import 'package:electronics_app/core/utils/app_colors.dart';
+import 'package:electronics_app/core/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class CategoryWidget extends StatelessWidget {
@@ -17,26 +18,32 @@ class CategoryWidget extends StatelessWidget {
       Icons.camera_alt,
       Icons.watch,
     ];
-    return GestureDetector(
-      onTap: () {},
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 16,
-        children: [
-          Text(
-            "Categories",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-          ),
-          SizedBox(
-            height: 80,
-            child: ListView.separated(
-              itemCount: categoriesNames.length,
-              scrollDirection: Axis.horizontal,
-              separatorBuilder: (context, index) => SizedBox(width: 20),
-              itemBuilder: (context, index) {
-                final categoryIcon = categoriesIcons[index];
-                final categoryName = categoriesNames[index];
-                return Column(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 16,
+      children: [
+        Text(
+          "Categories",
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        ),
+        SizedBox(
+          height: 80,
+          child: ListView.separated(
+            itemCount: categoriesNames.length,
+            scrollDirection: Axis.horizontal,
+            separatorBuilder: (context, index) => SizedBox(width: 20),
+            itemBuilder: (context, index) {
+              final categoryIcon = categoriesIcons[index];
+              final categoryName = categoriesNames[index];
+              return InkWell(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    AppRoutes.productsCategories,
+                    arguments: categoriesNames[index],
+                  );
+                },
+                child: Column(
                   spacing: 10,
                   children: [
                     CircleAvatar(
@@ -53,12 +60,12 @@ class CategoryWidget extends StatelessWidget {
                       style: TextStyle(color: Color(0xff868889), fontSize: 10),
                     ),
                   ],
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

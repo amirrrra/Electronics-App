@@ -7,6 +7,7 @@ class ApiService {
 
   Future<List<dynamic>> get(String endpoint) async {
     var response = await dio.get('${_baseUrl}v1/$endpoint');
+
     if (response.statusCode == 200) {
       return response.data;
       

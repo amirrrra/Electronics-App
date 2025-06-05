@@ -19,11 +19,14 @@ class ElectronicsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ProductsCubit>(
-          create: (context) => ProductsCubit(ProductsRepoImpl(ApiService()))..fetchAllProducts(),
+        BlocProvider(
+          create: (context) =>
+              ProductsCubit(ProductsRepoImpl(ApiService()))..fetchAllProducts(),
         ),
-        BlocProvider<CategoriesCubit>(
-          create: (context) => CategoriesCubit(ProductsRepoImpl(ApiService()))..fetchCategories(),
+        BlocProvider(
+          create: (context) =>
+              CategoriesCubit(ProductsRepoImpl(ApiService()))
+                ..fetchCategories(),
         ),
       ],
       child: MaterialApp(

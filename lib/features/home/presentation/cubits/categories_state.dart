@@ -1,17 +1,17 @@
 class CategoriesState {}
 
-class CategoriesStateInitialState extends CategoriesState {}
+class CategoriesInitialState extends CategoriesState {}
 
-class CategoriesStateLoadingState extends CategoriesState {}
+class CategoriesLoadingState extends CategoriesState {}
 
-class CategoriesStateSuccessState extends CategoriesState {
+class CategoriesSuccessState extends CategoriesState {
   final List<String> categories;
 
-  CategoriesStateSuccessState(this.categories);
+  CategoriesSuccessState(this.categories);
 }
 
-class CategoriesStateFailureState extends CategoriesState {
+class CategoriesFailureState extends CategoriesState {
   final String errorMessage;
 
-  CategoriesStateFailureState({required this.errorMessage});
+  CategoriesFailureState({required this.errorMessage});
 }

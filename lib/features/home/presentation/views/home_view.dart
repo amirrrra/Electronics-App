@@ -1,8 +1,7 @@
 import 'package:electronics_app/core/utils/constants.dart';
-import 'package:electronics_app/features/home/presentation/views/widgets/carousel_widget.dart';
+import 'package:electronics_app/features/home/presentation/views/widgets/category_builder_widget.dart';
 import 'package:electronics_app/features/home/presentation/views/widgets/products_builder_widget.dart';
 import 'package:flutter/material.dart';
-import 'widgets/category_widget.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -20,7 +19,7 @@ class HomeView extends StatelessWidget {
                   spacing: 32,
                   children: [
                     // CarouselWidget(),
-                    CategoryWidget(),
+                    CategoryBuilderWidget(),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20),
                       child: Align(

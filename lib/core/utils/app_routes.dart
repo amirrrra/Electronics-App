@@ -28,12 +28,14 @@ abstract class AppRoutes {
       case productDetails:
         return MaterialPageRoute(
           builder: (context) => const ProductsDetailsView(),
+          settings: settings,
         );
       case productsCategories:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) =>
-                CategoryProductsCubit(ProductsRepoImpl(ApiService()))..fetchCategoryProducts(settings.arguments as String),
+                CategoryProductsCubit(ProductsRepoImpl(ApiService()))
+                  ..fetchCategoryProducts(settings.arguments as String),
             child: const ProductsCategoryView(),
           ),
           settings: settings,

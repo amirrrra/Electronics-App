@@ -1,3 +1,4 @@
+import 'package:electronics_app/core/utils/constants.dart';
 import 'package:electronics_app/features/home/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 
@@ -15,17 +16,20 @@ class ProductsCategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: GridView.builder(
-        itemCount: products.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 18,
-          crossAxisSpacing: 20,
-          childAspectRatio: 180 / 224,
+      child: Padding(
+        padding: Constants.horizPadding20,
+        child: GridView.builder(
+          itemCount: products.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 18,
+            crossAxisSpacing: 20,
+            childAspectRatio: 180 / 224,
+          ),
+          itemBuilder: (context, index) {
+            return ProductCardWidget(productModel: products[index]);
+          },
         ),
-        itemBuilder: (context, index) {
-          return ProductCardWidget(productModel: products[index]);
-        },
       ),
     );
   }

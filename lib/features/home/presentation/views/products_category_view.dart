@@ -1,3 +1,4 @@
+import 'package:electronics_app/core/utils/app_colors.dart';
 import 'package:electronics_app/features/home/data/models/product_model.dart';
 import 'package:electronics_app/features/home/presentation/cubits/category_products_cubit.dart';
 import 'package:electronics_app/features/home/presentation/cubits/category_products_state.dart';
@@ -13,7 +14,7 @@ class ProductsCategoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     final category = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
-      appBar: AppBar(title: Text(category)),
+      appBar: AppBar(title: Text(category),backgroundColor: AppColors.transparent,),
       body: BlocBuilder<CategoryProductsCubit, CategoryProductsState>(
         builder: (BuildContext context, state) {
           if (state is CategoryProductsSuccessState) {

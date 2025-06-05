@@ -1,3 +1,4 @@
+import 'package:electronics_app/core/utils/app_colors.dart';
 import 'package:electronics_app/core/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'core/utils/constants.dart';
@@ -13,7 +14,13 @@ class ElectronicsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: Constants.kPoppins),
+      theme: ThemeData(
+        fontFamily: Constants.kPoppins,
+        textTheme: TextTheme(
+          bodyMedium: TextStyle(color: AppColors.primaryColor),
+        ),
+      ),
+
       onGenerateRoute: AppRoutes.onGenerateRoute,
       // initialRoute: AppRoutes.login,
       initialRoute: AppRoutes.home,

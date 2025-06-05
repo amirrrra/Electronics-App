@@ -1,9 +1,7 @@
 import 'package:electronics_app/core/utils/constants.dart';
 import 'package:electronics_app/features/home/presentation/views/widgets/carousel_widget.dart';
-import 'package:electronics_app/features/home/presentation/views/widgets/product_card_widget.dart';
 import 'package:electronics_app/features/home/presentation/views/widgets/products_grid_widget.dart';
 import 'package:flutter/material.dart';
-
 import 'widgets/category_widget.dart';
 
 class HomeView extends StatelessWidget {

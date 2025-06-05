@@ -25,9 +25,17 @@ class ProductsRepoImpl extends ProductsRepo {
   }
 
   @override
-  Future<Either<Failure, dynamic>> fetchCategories() {
-    // TODO: implement fetchCategories
-    throw UnimplementedError();
+  Future<Either<Failure, List<String>>> fetchCategories() async {
+    try {
+      var result = await _apiService.get('all/categories');
+      var categories = result.map((e) => e.toString()).toList();
+      return Right(categories);
+    } on Exception catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(Failure(errMessage: e.toString()));
+    }
   }
 
   @override

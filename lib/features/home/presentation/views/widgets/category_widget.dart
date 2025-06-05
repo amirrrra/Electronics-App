@@ -17,44 +17,49 @@ class CategoryWidget extends StatelessWidget {
       CategoryModel(iconData: Icons.watch, name: 'Wearables'),
       CategoryModel(iconData: Icons.devices, name: 'Accessories'),
     ];
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 16,
-      children: [
-        Text(
-          "Categories",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-        ),
-        SizedBox(
-          height: 80,
-          child: ListView.separated(
-            itemCount: categoriesItems.length,
-            scrollDirection: Axis.horizontal,
-            separatorBuilder: (context, index) => SizedBox(width: 20),
-            itemBuilder: (context, index) {
-              final category = categoriesItems[index];
-              return Column(
-                spacing: 10,
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Color(0xffF3EFFA),
-                    radius: 25,
-                    child: Icon(
-                      category.iconData,
-                      color: AppColors.primaryColor,
-                      size: 24,
-                    ),
-                  ),
-                  Text(
-                    category.name,
-                    style: TextStyle(color: Color(0xff868889), fontSize: 10),
-                  ),
-                ],
-              );
-            },
+    return GestureDetector(
+      onTap: () {
+        
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 16,
+        children: [
+          Text(
+            "Categories",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
           ),
-        ),
-      ],
+          SizedBox(
+            height: 80,
+            child: ListView.separated(
+              itemCount: categoriesItems.length,
+              scrollDirection: Axis.horizontal,
+              separatorBuilder: (context, index) => SizedBox(width: 20),
+              itemBuilder: (context, index) {
+                final category = categoriesItems[index];
+                return Column(
+                  spacing: 10,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Color(0xffF3EFFA),
+                      radius: 25,
+                      child: Icon(
+                        category.iconData,
+                        color: AppColors.primaryColor,
+                        size: 24,
+                      ),
+                    ),
+                    Text(
+                      category.name,
+                      style: TextStyle(color: Color(0xff868889), fontSize: 10),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

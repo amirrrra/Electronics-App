@@ -26,7 +26,7 @@ class SignupConsumerWidget extends StatelessWidget {
               context: context,
               message: 'The account was created successfully',
             );
-            Navigator.pushReplacementNamed(context, AppRoutes.home);
+            Navigator.pushReplacementNamed(context, AppRoutes.login);
           });
         }
         if (state is FailureSignupState) {

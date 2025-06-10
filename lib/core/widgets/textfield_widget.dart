@@ -36,7 +36,7 @@ class TextfieldWidget extends StatelessWidget {
       style: AppStyles.semiMeduim16,
       decoration: InputDecoration(
         filled: true,
-        fillColor: AppColors.greyF9,
+        fillColor: AppColors.white,
         hintText: hint,
         suffixIcon: suffixIcon,
         suffixIconColor: Color(0xFFC9CECF),
@@ -55,7 +55,7 @@ class TextfieldWidget extends StatelessWidget {
   OutlineInputBorder getBorder() {
     return const OutlineInputBorder(
       borderSide: BorderSide(color: AppColors.greyE6),
-      borderRadius: Constants.borderRadius8,
+      borderRadius: Constants.borderRadius5,
     );
   }
 }

@@ -36,14 +36,15 @@ class ElectronicsApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyMedium: TextStyle(color: AppColors.primaryColor),
           ),
-          scaffoldBackgroundColor: AppColors.white,
+          scaffoldBackgroundColor: AppColors.greyF4,
         ),
 
         onGenerateRoute: AppRoutes.onGenerateRoute,
-        // initialRoute: AppRoutes.login,
+        initialRoute: AppRoutes.login,
+        // initialRoute: AppRoutes.signup,
         // initialRoute: AppRoutes.home,
-        // initialRoute: AppRoutes.productDetails,
-        initialRoute: AppRoutes.account,
+        // initialRoute: AppRoutes.account,
+        // initialRoute: AppRoutes.productsCategories,
       ),
     );
   }

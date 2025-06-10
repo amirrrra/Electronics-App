@@ -14,7 +14,7 @@ class ButtonWidget extends StatelessWidget {
       style: TextButton.styleFrom(
         minimumSize: Size(double.infinity, 54),
         backgroundColor: AppColors.primaryColor,
-        shape: RoundedRectangleBorder(borderRadius: Constants.borderRadius16),
+        shape: RoundedRectangleBorder(borderRadius: Constants.borderRadius5),
       ),
       onPressed: onPressed,
       child: Text(text, style: AppStyles.bold16.copyWith(color: Colors.white)),

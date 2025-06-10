@@ -7,17 +7,12 @@ class ForgotPasswordWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        GestureDetector(
-          onTap: (){},
-          child: Text(
-            'Forgot password?',
-            style: AppStyles.semiBold14.copyWith(color: AppColors.secondaryColor),
-          ),
-        ),
-      ],
+    return GestureDetector(
+      onTap: () {},
+      child: Text(
+        'Forgot password',
+        style: AppStyles.semiBold14.copyWith(color: AppColors.blue40),
+      ),
     );
   }
 }

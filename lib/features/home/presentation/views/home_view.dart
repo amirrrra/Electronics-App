@@ -3,6 +3,8 @@ import 'package:electronics_app/features/home/presentation/views/widgets/categor
 import 'package:electronics_app/features/home/presentation/views/widgets/products_builder_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'widgets/carousel_widget.dart';
+
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 

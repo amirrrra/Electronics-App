@@ -41,8 +41,9 @@ class ElectronicsApp extends StatelessWidget {
 
         onGenerateRoute: AppRoutes.onGenerateRoute,
         // initialRoute: AppRoutes.login,
-        initialRoute: AppRoutes.home,
+        // initialRoute: AppRoutes.home,
         // initialRoute: AppRoutes.productDetails,
+        initialRoute: AppRoutes.account,
       ),
     );
   }

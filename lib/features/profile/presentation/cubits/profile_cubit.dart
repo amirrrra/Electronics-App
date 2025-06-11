@@ -6,9 +6,10 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit(this._profileRepo) : super(ProfileInitialState());
   final ProfileRepo _profileRepo;
 
-  Future<void> fetchProfile({required String token}) async {
+  Future<void> fetchProfile({required String? token}) async {
     emit(ProfileLoadingState());
     final result = await _profileRepo.fetchProfile(token);
+    print(result);
     result.fold(
       (failure) => emit(ProfileFailureState(message: failure.errMessage)),
       (user) => emit(ProfileSuccessState(user: user)),

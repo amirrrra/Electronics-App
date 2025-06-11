@@ -3,9 +3,7 @@ import 'package:electronics_app/core/utils/app_routes.dart';
 import 'package:electronics_app/core/utils/app_styles.dart';
 import 'package:electronics_app/core/utils/constants.dart';
 import 'package:electronics_app/features/profile/data/models/section_profile_model.dart';
-import 'package:electronics_app/features/profile/presentation/cubits/profile_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileSectionsWidget extends StatelessWidget {
   const ProfileSectionsWidget({super.key});
@@ -16,9 +14,8 @@ class ProfileSectionsWidget extends StatelessWidget {
       SectionProfileModel(
         icon: Icons.account_circle_outlined,
         label: 'About Me',
-        onTap: () {
+        onTap: () async {
           Navigator.pushNamed(context, AppRoutes.aboutMe);
-          // BlocProvider.of<ProfileCubit>(context).fetchProfile(token: token);
         },
       ),
       SectionProfileModel(

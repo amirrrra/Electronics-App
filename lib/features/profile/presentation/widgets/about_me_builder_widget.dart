@@ -1,4 +1,5 @@
 import 'package:electronics_app/features/profile/data/models/user_profile_model.dart';
+import 'package:electronics_app/features/profile/presentation/cubits/profile_cubit.dart';
 import 'package:electronics_app/features/profile/presentation/cubits/profile_state.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +11,7 @@ class AboutMeBuilderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
+    return BlocBuilder< ProfileCubit, ProfileState>(
       builder: (BuildContext context, state) {
         if (state is ProfileSuccessState) {
           return AboutMeWidget(user: state.user);

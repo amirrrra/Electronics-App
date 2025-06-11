@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:electronics_app/core/error/failure.dart';
 import 'package:electronics_app/core/services/api_service.dart';
+import 'package:electronics_app/core/services/prefs_token.dart';
 import 'package:electronics_app/features/authentication/data/models/user_model.dart';
 import 'package:electronics_app/features/authentication/data/repos/auth_repo.dart';
 
@@ -12,7 +13,12 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future<Either<Failure, void>> login(String email, String password) async {
     try {
-      await apiService.post('login', {"email": email, "password": password});
+      final response = await apiService.post('login', {
+        "email": email,
+        "password": password,
+      });
+      var token = response['data']['token'];
+      saveToken(token);
       return const Right(null);
     } catch (e) {
       if (e is DioException) {

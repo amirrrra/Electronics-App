@@ -19,7 +19,7 @@ class HomeView extends StatelessWidget {
                 child: Column(
                   spacing: 32,
                   children: [
-                    // CarouselWidget(),
+                    CarouselWidget(),
                     CategoryBuilderWidget(),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20),

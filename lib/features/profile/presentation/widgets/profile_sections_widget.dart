@@ -1,19 +1,19 @@
 import 'package:electronics_app/core/utils/app_colors.dart';
 import 'package:electronics_app/core/utils/app_styles.dart';
 import 'package:electronics_app/core/utils/constants.dart';
-import 'package:electronics_app/features/authentication/data/models/account_model.dart';
+import 'package:electronics_app/features/profile/data/models/section_profile_model.dart';
 import 'package:flutter/material.dart';
 
-class AccountSectionsWidget extends StatelessWidget {
-  const AccountSectionsWidget({super.key});
+class ProfileSectionsWidget extends StatelessWidget {
+  const ProfileSectionsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<AccountModel> items = [
-      AccountModel(icon: Icons.account_circle_outlined, label: 'About Me'),
-      AccountModel(icon: Icons.list_alt_outlined, label: 'My Orders'),
-      AccountModel(icon: Icons.favorite_border, label: 'My Favorites'),
-      AccountModel(icon: Icons.logout_outlined, label: 'Sign out'),
+    final List<SectionProfileModel> items = [
+      SectionProfileModel(icon: Icons.account_circle_outlined, label: 'About Me'),
+      SectionProfileModel(icon: Icons.list_alt_outlined, label: 'My Orders'),
+      SectionProfileModel(icon: Icons.favorite_border, label: 'My Favorites'),
+      SectionProfileModel(icon: Icons.logout_outlined, label: 'Sign out'),
     ];
     return Column(
       children: List.generate(items.length, (index) {

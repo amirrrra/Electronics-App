@@ -1,6 +1,6 @@
 import 'package:electronics_app/core/services/api_service.dart';
-import 'package:electronics_app/features/authentication/presentation/views/about_me_view.dart';
-import 'package:electronics_app/features/authentication/presentation/views/account_view.dart';
+import 'package:electronics_app/features/profile/presentation/about_me_view.dart';
+import 'package:electronics_app/features/profile/presentation/profile_view.dart';
 import 'package:electronics_app/features/authentication/presentation/views/login_view.dart';
 import 'package:electronics_app/features/authentication/presentation/views/signup_view.dart';
 import 'package:electronics_app/features/home/data/repos/products_repo_impl.dart';
@@ -16,7 +16,7 @@ abstract class AppRoutes {
   static const String login = 'login';
   static const String signup = 'signup';
   static const String home = 'home';
-  static const String account = 'account';
+  static const String profile = 'profile';
   static const String aboutme = 'aboutme';
   static const String productDetails = 'productDetails';
   static const String productsCategories = 'productsCategories';
@@ -29,8 +29,8 @@ abstract class AppRoutes {
         return MaterialPageRoute(builder: (context) => SignupView());
       case home:
         return MaterialPageRoute(builder: (context) => const HomeView());
-      case account:
-        return MaterialPageRoute(builder: (context) => AccountView());
+      case profile:
+        return MaterialPageRoute(builder: (context) => ProfileView());
       case aboutme:
         return MaterialPageRoute(builder: (context) => AboutMeView());
       case productDetails:

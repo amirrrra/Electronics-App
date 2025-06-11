@@ -11,7 +11,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     final result = await _profileRepo.fetchProfile(token);
     result.fold(
       (failure) => emit(ProfileFailureState(message: failure.errMessage)),
-      (data) => emit(ProfileSuccessState()),
+      (user) => emit(ProfileSuccessState(user: user)),
     );
   }
 }

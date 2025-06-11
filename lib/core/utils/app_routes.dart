@@ -17,7 +17,7 @@ abstract class AppRoutes {
   static const String signup = 'signup';
   static const String home = 'home';
   static const String profile = 'profile';
-  static const String aboutme = 'aboutme';
+  static const String aboutMe = 'aboutMe';
   static const String productDetails = 'productDetails';
   static const String productsCategories = 'productsCategories';
 
@@ -31,7 +31,7 @@ abstract class AppRoutes {
         return MaterialPageRoute(builder: (context) => const HomeView());
       case profile:
         return MaterialPageRoute(builder: (context) => ProfileView());
-      case aboutme:
+      case aboutMe:
         return MaterialPageRoute(builder: (context) => AboutMeView());
       case productDetails:
         return MaterialPageRoute(

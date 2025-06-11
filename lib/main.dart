@@ -4,6 +4,8 @@ import 'package:electronics_app/core/utils/app_routes.dart';
 import 'package:electronics_app/features/home/data/repos/products_repo_impl.dart';
 import 'package:electronics_app/features/home/presentation/cubits/categories_cubit/categories_cubit.dart';
 import 'package:electronics_app/features/home/presentation/cubits/products_cubit/products_cubit.dart';
+import 'package:electronics_app/features/profile/data/repos/profile_repo_impl.dart';
+import 'package:electronics_app/features/profile/presentation/cubits/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/utils/constants.dart';
@@ -20,13 +22,21 @@ class ElectronicsApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              ProductsCubit(ProductsRepoImpl(ApiService()))..fetchAllProducts(),
+          create: (context) {
+            return ProductsCubit(ProductsRepoImpl(ApiService()))
+              ..fetchAllProducts();
+          },
         ),
         BlocProvider(
-          create: (context) =>
-              CategoriesCubit(ProductsRepoImpl(ApiService()))
-                ..fetchCategories(),
+          create: (context) {
+            return CategoriesCubit(ProductsRepoImpl(ApiService()))
+              ..fetchCategories();
+          },
+        ),
+        BlocProvider(
+          create: (context) {
+            return ProfileCubit(ProfileRepoImpl());
+          },
         ),
       ],
       child: MaterialApp(
@@ -44,7 +54,7 @@ class ElectronicsApp extends StatelessWidget {
         // initialRoute: AppRoutes.signup,
         // initialRoute: AppRoutes.home,
         // initialRoute: AppRoutes.account,
-        initialRoute: AppRoutes.aboutme,
+        initialRoute: AppRoutes.aboutMe,
         // initialRoute: AppRoutes.productsCategories,
       ),
     );

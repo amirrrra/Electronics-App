@@ -12,7 +12,7 @@ class ProductsRepoImpl extends ProductsRepo {
   @override
   Future<Either<Failure, List<ProductModel>>> fetchAllProducts() async {
     try {
-      var result = await _apiService.get('all/products');
+      var result = await _apiService.get('v1/all/products');
       final products = result.map((e) => ProductModel.fromJson(e)).toList();
       return Right(products);
     } on Exception catch (e) {
@@ -26,7 +26,7 @@ class ProductsRepoImpl extends ProductsRepo {
   @override
   Future<Either<Failure, List<String>>> fetchCategories() async {
     try {
-      var result = await _apiService.get('all/categories');
+      var result = await _apiService.get('v1/all/categories');
       var categories = result.map((e) => e.toString()).toList();
       return Right(categories);
     } on Exception catch (e) {
@@ -42,7 +42,7 @@ class ProductsRepoImpl extends ProductsRepo {
     String category,
   ) async {
     try {
-      var result = await _apiService.get('products/category/$category');
+      var result = await _apiService.get('v1/products/category/$category');
       final products = result.map((e) => ProductModel.fromJson(e)).toList();
 
       return Right(products);

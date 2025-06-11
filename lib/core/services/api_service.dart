@@ -5,15 +5,13 @@ class ApiService {
 
   final String _baseUrl = 'https://ib.jamalmoallart.com/api/';
 
-  Future<List<dynamic>> get(String endpoint) async {
-    var response = await dio.get('${_baseUrl}v1/$endpoint');
+  Future<List<dynamic>> get(
+    String endpoint, {
+    Map<String, dynamic>? data,
+  }) async {
+    var response = await dio.get('$_baseUrl$endpoint', data: data);
 
-    if (response.statusCode == 200) {
-      return response.data;
-      
-    } else {
-      throw Exception("Error occurred with response ${response.statusCode}");
-    }
+    return response.data;
   }
 
   Future<Map<String, dynamic>> post(
@@ -21,7 +19,7 @@ class ApiService {
     Map<String, dynamic> data,
   ) async {
     var response = await dio.post(
-     '${_baseUrl}v2/$endpoint',
+      '${_baseUrl}v2/$endpoint',
       data: data,
       options: Options(
         headers: {
@@ -30,11 +28,6 @@ class ApiService {
         },
       ),
     );
-    if (response.statusCode == 200) {
-      return response.data;
-    } else {
-      throw Exception("Error occurred with response ${response.statusMessage}");
-
-    }
+    return response.data;
   }
 }

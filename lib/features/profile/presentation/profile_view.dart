@@ -11,7 +11,7 @@ class ProfileView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.greyF4,
       body: SafeArea(
-        child: AccountWidget(),
+        child: ProfileWidget(),
       ),
     );
   }

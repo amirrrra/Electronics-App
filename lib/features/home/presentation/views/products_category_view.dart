@@ -1,7 +1,7 @@
 import 'package:electronics_app/core/utils/app_colors.dart';
 import 'package:electronics_app/features/home/data/models/product_model.dart';
-import 'package:electronics_app/features/home/presentation/cubits/category_products_cubit.dart';
-import 'package:electronics_app/features/home/presentation/cubits/category_products_state.dart';
+import 'package:electronics_app/features/home/presentation/cubits/category_products_cubit/category_products_cubit.dart';
+import 'package:electronics_app/features/home/presentation/cubits/category_products_cubit/category_products_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';

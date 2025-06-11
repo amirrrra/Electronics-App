@@ -1,5 +1,5 @@
 import 'package:electronics_app/features/home/data/repos/products_repo.dart';
-import 'package:electronics_app/features/home/presentation/cubits/category_products_state.dart';
+import 'package:electronics_app/features/home/presentation/cubits/category_products_cubit/category_products_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoryProductsCubit extends Cubit<CategoryProductsState> {

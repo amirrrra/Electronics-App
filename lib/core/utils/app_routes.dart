@@ -4,7 +4,7 @@ import 'package:electronics_app/features/profile/presentation/profile_view.dart'
 import 'package:electronics_app/features/authentication/presentation/views/login_view.dart';
 import 'package:electronics_app/features/authentication/presentation/views/signup_view.dart';
 import 'package:electronics_app/features/home/data/repos/products_repo_impl.dart';
-import 'package:electronics_app/features/home/presentation/cubits/category_products_cubit.dart';
+import 'package:electronics_app/features/home/presentation/cubits/category_products_cubit/category_products_cubit.dart';
 import 'package:electronics_app/features/home/presentation/views/home_view.dart';
 import 'package:electronics_app/features/home/presentation/views/products_details_view.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
-import 'package:electronics_app/features/home/presentation/cubits/categories_cubit.dart';
-import 'package:electronics_app/features/home/presentation/cubits/categories_state.dart';
+import 'package:electronics_app/features/home/presentation/cubits/categories_cubit/categories_cubit.dart';
+import 'package:electronics_app/features/home/presentation/cubits/categories_cubit/categories_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';

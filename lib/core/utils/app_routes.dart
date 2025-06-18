@@ -1,4 +1,5 @@
 import 'package:electronics_app/core/services/api_service.dart';
+import 'package:electronics_app/features/authentication/presentation/views/widgets/navbar_widget.dart';
 import 'package:electronics_app/features/profile/presentation/about_me_view.dart';
 import 'package:electronics_app/features/profile/presentation/profile_view.dart';
 import 'package:electronics_app/features/authentication/presentation/views/login_view.dart';
@@ -20,9 +21,12 @@ abstract class AppRoutes {
   static const String aboutMe = 'aboutMe';
   static const String productDetails = 'productDetails';
   static const String productsCategories = 'productsCategories';
+  static const String navbar = 'navbar';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case navbar:
+        return MaterialPageRoute(builder: (context) => const NavbarWidget());
       case login:
         return MaterialPageRoute(builder: (context) => const LoginView());
       case signup:

@@ -23,7 +23,7 @@ class LoginConsumerWidget extends StatelessWidget {
         if (state is SuccessLoginState) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             showSnackbarHelper(context: context, message: 'Login successfully');
-            Navigator.pushReplacementNamed(context, AppRoutes.home);
+            Navigator.pushReplacementNamed(context, AppRoutes.navbar);
           });
         }
         if (state is FailureLoginState) {

@@ -40,4 +40,21 @@ class AuthRepoImpl extends AuthRepo {
       return left(Failure(errMessage: e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> logout(String token) async {
+    Dio dio = Dio();
+    try {
+      await dio.get(
+        'https://ib.jamalmoallart.com/api/v2/logout',
+        queryParameters: {'token': token},
+      );
+      return right(null);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(Failure(errMessage: e.toString()));
+    }
+  }
 }

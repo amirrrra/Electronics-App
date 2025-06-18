@@ -1,8 +1,8 @@
 import 'package:electronics_app/core/utils/app_colors.dart';
 import 'package:electronics_app/core/utils/app_styles.dart';
+import 'package:electronics_app/features/profile/presentation/widgets/logout_listener_widget.dart';
 import 'package:flutter/material.dart';
 import 'profile_image_widget.dart';
-import 'profile_sections_widget.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({super.key});
@@ -22,7 +22,7 @@ class ProfileWidget extends StatelessWidget {
               style: AppStyles.regular12.copyWith(color: AppColors.grey86),
             ),
             SizedBox(height: 12),
-            ProfileSectionsWidget(),
+            LogoutListenerWidget(),
           ],
         ),
 

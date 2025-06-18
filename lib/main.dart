@@ -1,6 +1,9 @@
 import 'package:electronics_app/core/services/api_service.dart';
+import 'package:electronics_app/core/services/prefs_token.dart';
 import 'package:electronics_app/core/utils/app_colors.dart';
 import 'package:electronics_app/core/utils/app_routes.dart';
+import 'package:electronics_app/features/authentication/data/repos/auth_repo_impl.dart';
+import 'package:electronics_app/features/authentication/presentation/cubits/auth_cubit.dart';
 import 'package:electronics_app/features/cart/presentation/cubits/cart_cubit.dart';
 import 'package:electronics_app/features/home/data/repos/products_repo_impl.dart';
 import 'package:electronics_app/features/home/presentation/cubits/categories_cubit/categories_cubit.dart';
@@ -12,17 +15,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/utils/constants.dart';
 import 'features/search/presentation/cubits/search_cubit.dart';
 
-void main() {
-  runApp(const ElectronicsApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final token = await getToken();
+  runApp(ElectronicsApp(token: token));
 }
 
 class ElectronicsApp extends StatelessWidget {
-  const ElectronicsApp({super.key});
+  final String? token;
+  const ElectronicsApp({super.key, this.token});
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) {
+            return AuthCubit(AuthRepoImpl(ApiService()));
+          },
+        ),
         BlocProvider(
           create: (context) {
             return CartCubit();
@@ -62,7 +73,7 @@ class ElectronicsApp extends StatelessWidget {
         ),
 
         onGenerateRoute: AppRoutes.onGenerateRoute,
-        initialRoute: AppRoutes.navbar,
+        initialRoute: token == null ? AppRoutes.login : AppRoutes.navbar,
         // initialRoute: AppRoutes.login,
         // initialRoute: AppRoutes.signup,
         // initialRoute: AppRoutes.home,

@@ -5,4 +5,6 @@ import 'package:electronics_app/features/authentication/data/models/user_model.d
 abstract class AuthRepo {
   Future<Either<Failure,void>> login(String email, String password);
   Future<Either<Failure,void>> signup(UserModel userModel);
+  Future<Either<Failure,dynamic>> logout(String token);
+
 }

@@ -1,5 +1,7 @@
 import 'package:electronics_app/core/services/api_service.dart';
-import 'package:electronics_app/features/authentication/presentation/views/widgets/navbar_widget.dart';
+import 'package:electronics_app/core/widgets/navbar_widget.dart';
+import 'package:electronics_app/features/cart/presentation/views/cart_view.dart';
+import 'package:electronics_app/features/home/presentation/views/products_category_view.dart';
 import 'package:electronics_app/features/profile/presentation/about_me_view.dart';
 import 'package:electronics_app/features/profile/presentation/profile_view.dart';
 import 'package:electronics_app/features/authentication/presentation/views/login_view.dart';
@@ -12,8 +14,6 @@ import 'package:electronics_app/features/search/presentation/views/search_view.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/home/presentation/views/products_category_view.dart';
-
 abstract class AppRoutes {
   static const String login = 'login';
   static const String signup = 'signup';
@@ -24,6 +24,7 @@ abstract class AppRoutes {
   static const String productsCategories = 'productsCategories';
   static const String navbar = 'navbar';
   static const String search = 'search';
+  static const String cart = 'cart';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -31,6 +32,8 @@ abstract class AppRoutes {
         return MaterialPageRoute(builder: (context) => const NavbarWidget());
       case search:
         return MaterialPageRoute(builder: (context) => const SearchView());
+      case cart:
+        return MaterialPageRoute(builder: (context) => const CartView());
       case login:
         return MaterialPageRoute(builder: (context) => const LoginView());
       case signup:

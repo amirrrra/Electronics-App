@@ -1,4 +1,5 @@
 import 'package:electronics_app/core/utils/app_colors.dart';
+import 'package:electronics_app/core/utils/app_routes.dart';
 import 'package:electronics_app/features/authentication/presentation/views/login_view.dart';
 import 'package:electronics_app/features/authentication/presentation/views/signup_view.dart';
 import 'package:electronics_app/features/home/presentation/views/home_view.dart';
@@ -50,7 +51,9 @@ class _NavbarWidgetState extends State<NavbarWidget> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 8),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, AppRoutes.cart);
+          },
           backgroundColor: AppColors.customColor,
           shape: CircleBorder(),
           child: Icon(Icons.shopping_bag_outlined, color: AppColors.white),

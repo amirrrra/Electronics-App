@@ -1,4 +1,3 @@
-
 class ProductModel {
   final int id;
   final String name;
@@ -28,5 +27,17 @@ class ProductModel {
       discount: json['discount'],
       image: json['image'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'category': category,
+      'description': description,
+      'price': price,
+      'discount': discount,
+      'image': image,
+    };
   }
 }

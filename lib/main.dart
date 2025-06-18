@@ -9,6 +9,7 @@ import 'package:electronics_app/features/profile/presentation/cubits/profile_cub
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/utils/constants.dart';
+import 'features/search/presentation/cubits/search_cubit.dart';
 
 void main() {
   runApp(const ElectronicsApp());
@@ -25,6 +26,11 @@ class ElectronicsApp extends StatelessWidget {
           create: (context) {
             return ProductsCubit(ProductsRepoImpl(ApiService()))
               ..fetchAllProducts();
+          },
+        ),
+        BlocProvider(
+          create: (context) {
+            return SearchCubit(ProductsRepoImpl(ApiService()));
           },
         ),
         BlocProvider(

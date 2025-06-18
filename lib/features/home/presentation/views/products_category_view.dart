@@ -5,7 +5,7 @@ import 'package:electronics_app/features/home/presentation/cubits/category_produ
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'widgets/products_category_widget.dart';
+import '../../../../core/widgets/products_grid_widget.dart';
 
 class ProductsCategoryView extends StatelessWidget {
   const ProductsCategoryView({super.key});
@@ -18,9 +18,8 @@ class ProductsCategoryView extends StatelessWidget {
       body: BlocBuilder<CategoryProductsCubit, CategoryProductsState>(
         builder: (BuildContext context, state) {
           if (state is CategoryProductsSuccessState) {
-            return ProductsCategoryWidget(
+            return ProductsGridWidget(
               products: state.products,
-              category: category,
             );
           } else if (state is CategoryProductsFailureState) {
             return ErrorWidget(state.errorMessage);
@@ -38,9 +37,8 @@ class ProductsCategoryView extends StatelessWidget {
               ),
             );
             return Skeletonizer(
-              child: ProductsCategoryWidget(
+              child: ProductsGridWidget(
                 products: dummyProducts,
-                category: category,
               ),
             );
           }

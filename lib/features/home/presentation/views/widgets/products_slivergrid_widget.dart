@@ -2,9 +2,9 @@ import 'package:electronics_app/features/home/data/models/product_model.dart';
 import 'package:electronics_app/features/home/presentation/views/widgets/product_card_widget.dart';
 import 'package:flutter/material.dart';
 
-class ProductsGridWidget extends StatelessWidget {
+class ProductsSlivergridWidget extends StatelessWidget {
   final List<ProductModel> products;
-  const ProductsGridWidget({super.key, required this.products});
+  const ProductsSlivergridWidget({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {

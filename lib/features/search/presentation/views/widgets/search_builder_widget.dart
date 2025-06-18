@@ -1,5 +1,6 @@
+import 'package:electronics_app/core/utils/app_styles.dart';
 import 'package:electronics_app/features/home/data/models/product_model.dart';
-import 'package:electronics_app/features/home/presentation/views/widgets/products_grid_widget.dart';
+import 'package:electronics_app/core/widgets/products_grid_widget.dart';
 import 'package:electronics_app/features/search/presentation/cubits/search_cubit.dart';
 import 'package:electronics_app/features/search/presentation/cubits/search_state.dart';
 import 'package:electronics_app/features/search/presentation/views/widgets/search_empty_widget.dart';
@@ -31,11 +32,16 @@ class SearchBuilderWidget extends StatelessWidget {
               image: '',
             ),
           );
-          return Skeletonizer.sliver(
+          return Skeletonizer(
             child: ProductsGridWidget(products: dummyProducts),
           );
         } else {
-          return SizedBox();
+          return Center(
+            child: Text(
+              'Start typing to search products 🔍',
+              style: AppStyles.medium15,
+            ),
+          );
         }
       },
     );

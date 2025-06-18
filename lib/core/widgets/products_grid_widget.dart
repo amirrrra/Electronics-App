@@ -2,15 +2,13 @@ import 'package:electronics_app/core/utils/constants.dart';
 import 'package:electronics_app/features/home/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 
-import 'product_card_widget.dart';
+import '../../features/home/presentation/views/widgets/product_card_widget.dart';
 
-class ProductsCategoryWidget extends StatelessWidget {
+class ProductsGridWidget extends StatelessWidget {
   final List<ProductModel> products;
-  final String category;
-  const ProductsCategoryWidget({
+  const ProductsGridWidget({
     super.key,
     required this.products,
-    required this.category,
   });
 
   @override

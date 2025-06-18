@@ -1,6 +1,8 @@
 import 'package:electronics_app/core/utils/app_colors.dart';
 import 'package:electronics_app/core/utils/app_styles.dart';
+import 'package:electronics_app/features/search/presentation/cubits/search_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchFieldWidget extends StatelessWidget {
   const SearchFieldWidget({super.key});
@@ -12,7 +14,9 @@ class SearchFieldWidget extends StatelessWidget {
     return SizedBox(
       height: 50,
       child: TextFormField(
-        onChanged: (query) {},
+        onChanged: (query) {
+         BlocProvider.of<SearchCubit>(context).fetchRelevantProducts(query);
+        },
         autofocus: true,
         cursorColor: AppColors.customColor,
         cursorHeight: 22,

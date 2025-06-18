@@ -11,6 +11,4 @@ class SearchSuccessState extends SearchState {
   SearchSuccessState(this.products);
 }
 
-class SearchEmptyState extends SearchState {
-  SearchEmptyState();
-}
+class SearchEmptyState extends SearchState {}

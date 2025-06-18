@@ -4,14 +4,28 @@ import 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
   final ProductsRepo _productsRepo;
+
   SearchCubit(this._productsRepo) : super(SearchInitialState());
 
   Future<void> fetchRelevantProducts(String query) async {
     emit(SearchLoadingState());
-    var result = await _productsRepo.fetchAllProducts();
+
+    final result = await _productsRepo.fetchAllProducts();
+
     result.fold(
       (_) => emit(SearchEmptyState()),
-      (products) => emit(SearchSuccessState(products)),
+      (allProducts) {
+
+        final filteredProducts = allProducts
+            .where((product) =>
+                product.name.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+        if (filteredProducts.isEmpty) {
+          emit(SearchEmptyState());
+        } else {
+          emit(SearchSuccessState(filteredProducts));
+        }
+      },
     );
   }
 }

@@ -50,13 +50,14 @@ class ElectronicsApp extends StatelessWidget {
         ),
 
         onGenerateRoute: AppRoutes.onGenerateRoute,
-        initialRoute: AppRoutes.navbar,
+        // initialRoute: AppRoutes.navbar,
         // initialRoute: AppRoutes.login,
         // initialRoute: AppRoutes.signup,
         // initialRoute: AppRoutes.home,
         // initialRoute: AppRoutes.account,
         // initialRoute: AppRoutes.aboutMe,
         // initialRoute: AppRoutes.productsCategories,
+        initialRoute: AppRoutes.search,
       ),
     );
   }

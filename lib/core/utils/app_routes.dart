@@ -8,6 +8,7 @@ import 'package:electronics_app/features/home/data/repos/products_repo_impl.dart
 import 'package:electronics_app/features/home/presentation/cubits/category_products_cubit/category_products_cubit.dart';
 import 'package:electronics_app/features/home/presentation/views/home_view.dart';
 import 'package:electronics_app/features/home/presentation/views/products_details_view.dart';
+import 'package:electronics_app/features/search/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,11 +23,14 @@ abstract class AppRoutes {
   static const String productDetails = 'productDetails';
   static const String productsCategories = 'productsCategories';
   static const String navbar = 'navbar';
+  static const String search = 'search';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case navbar:
         return MaterialPageRoute(builder: (context) => const NavbarWidget());
+      case search:
+        return MaterialPageRoute(builder: (context) => const SearchView());
       case login:
         return MaterialPageRoute(builder: (context) => const LoginView());
       case signup:

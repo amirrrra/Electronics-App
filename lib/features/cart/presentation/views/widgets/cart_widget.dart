@@ -1,0 +1,74 @@
+import 'package:electronics_app/core/utils/app_colors.dart';
+import 'package:electronics_app/core/utils/app_styles.dart';
+import 'package:flutter/material.dart';
+
+class CartWidget extends StatelessWidget {
+  const CartWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: AppColors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      child: Row(
+        children: [
+          ClipOval(
+            child: Image.network(
+              'https://btech.com/media/catalog/product/cache/4709f4e5925590e2003d78a7a1e77edb/b/d/bddcd22b45aa0a229167c454a79d5afdc01e6f1a0d6f71a63f541d07f72f33fa.jpeg',
+              fit: BoxFit.cover,
+              width: 60,
+              height: 60,
+              errorBuilder: (context, error, stackTrace) => ClipOval(
+                child: Image.network(
+                  'https://btech.com/media/catalog/product/cache/4709f4e5925590e2003d78a7a1e77edb/b/d/bddcd22b45aa0a229167c454a79d5afdc01e6f1a0d6f71a63f541d07f72f33fa.jpeg',
+                  fit: BoxFit.cover,
+                  width: 60,
+                  height: 60,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '\$45 x 4',
+                  style: AppStyles.medium12.copyWith(
+                    color: AppColors.customColor,
+                  ),
+                ),
+                Text('name', style: AppStyles.semiBold15),
+              ],
+            ),
+          ),
+          Column(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.add,
+                  size: 20,
+                  color: AppColors.customColor,
+                ),
+              ),
+              Text(
+                '5',
+                style: AppStyles.medium15.copyWith(color: AppColors.grey86),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.remove,
+                  size: 20,
+                  color: AppColors.customColor,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

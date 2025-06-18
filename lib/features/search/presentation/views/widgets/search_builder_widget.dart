@@ -2,6 +2,7 @@ import 'package:electronics_app/features/home/data/models/product_model.dart';
 import 'package:electronics_app/features/home/presentation/views/widgets/products_grid_widget.dart';
 import 'package:electronics_app/features/search/presentation/cubits/search_cubit.dart';
 import 'package:electronics_app/features/search/presentation/cubits/search_state.dart';
+import 'package:electronics_app/features/search/presentation/views/widgets/search_empty_widget.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -15,9 +16,9 @@ class SearchBuilderWidget extends StatelessWidget {
       builder: (context, state) {
         if (state is SearchSuccessState) {
           return ProductsGridWidget(products: state.products);
-        } else if (state is SearchFailureState) {
-          return ErrorWidget(state.errorMessage);
-        } else {
+        } else if (state is SearchEmptyState) {
+          return SearchEmptyWidget();
+        } else if (state is SearchLoadingState) {
           final dummyProducts = List.generate(
             10,
             (index) => ProductModel(
@@ -33,6 +34,8 @@ class SearchBuilderWidget extends StatelessWidget {
           return Skeletonizer.sliver(
             child: ProductsGridWidget(products: dummyProducts),
           );
+        } else {
+          return SizedBox();
         }
       },
     );

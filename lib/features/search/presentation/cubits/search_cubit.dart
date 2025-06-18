@@ -7,9 +7,10 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this._productsRepo) : super(SearchInitialState());
 
   Future<void> fetchRelevantProducts(String query) async {
+    emit(SearchLoadingState());
     var result = await _productsRepo.fetchAllProducts();
     result.fold(
-      (failure) => emit(SearchFailureState(failure.errMessage)),
+      (_) => emit(SearchEmptyState()),
       (products) => emit(SearchSuccessState(products)),
     );
   }

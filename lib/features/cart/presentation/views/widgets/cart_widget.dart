@@ -25,7 +25,7 @@ class CartWidget extends StatelessWidget {
           children: [
             ClipOval(
               child: Image.network(
-                'https://btech.com/media/catalog/product/cache/4709f4e5925590e2003d78a7a1e77edb/b/d/bddcd22b45aa0a229167c454a79d5afdc01e6f1a0d6f71a63f541d07f72f33fa.jpeg',
+                product.image,
                 fit: BoxFit.cover,
                 width: 60,
                 height: 60,
@@ -45,12 +45,12 @@ class CartWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '\$45 x 4',
+                    '\$${product.price} x 5',
                     style: AppStyles.medium12.copyWith(
                       color: AppColors.customColor,
                     ),
                   ),
-                  Text('name', style: AppStyles.semiBold15),
+                  Text(product.name, style: AppStyles.semiBold15),
                 ],
               ),
             ),

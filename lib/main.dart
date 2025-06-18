@@ -1,6 +1,7 @@
 import 'package:electronics_app/core/services/api_service.dart';
 import 'package:electronics_app/core/utils/app_colors.dart';
 import 'package:electronics_app/core/utils/app_routes.dart';
+import 'package:electronics_app/features/cart/presentation/cubits/cart_cubit.dart';
 import 'package:electronics_app/features/home/data/repos/products_repo_impl.dart';
 import 'package:electronics_app/features/home/presentation/cubits/categories_cubit/categories_cubit.dart';
 import 'package:electronics_app/features/home/presentation/cubits/products_cubit/products_cubit.dart';
@@ -22,6 +23,11 @@ class ElectronicsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) {
+            return CartCubit();
+          },
+        ),
         BlocProvider(
           create: (context) {
             return ProductsCubit(ProductsRepoImpl(ApiService()))

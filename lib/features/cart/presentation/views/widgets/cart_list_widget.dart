@@ -1,4 +1,6 @@
+import 'package:electronics_app/features/cart/presentation/cubits/cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cart_widget.dart';
 
 class CartListWidget extends StatelessWidget {
@@ -6,12 +8,13 @@ class CartListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartItems = context.watch<CartCubit>().state;
     return ListView.separated(
       padding: EdgeInsets.zero,
-      itemCount: 4,
+      itemCount: cartItems.length,
       separatorBuilder: (context, index) => const SizedBox(height: 12),
       itemBuilder: (context, index) {
-        return const CartWidget();
+        return CartWidget(product: cartItems[index]);
       },
     );
   }

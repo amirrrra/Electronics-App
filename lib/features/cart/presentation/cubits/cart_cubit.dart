@@ -9,9 +9,12 @@ class CartCubit extends Cubit<List<ProductModel>> {
   }
 
   Future<void> addToCart(ProductModel product) async {
-    final updatedCart = [...state, product];
-    emit(updatedCart);
-    await saveCartToPrefs(updatedCart);
+    final isAlreadyInCart = state.any((item) => item.id == product.id);
+    if (!isAlreadyInCart) {
+      final updatedCart = [...state, product];
+      emit(updatedCart);
+      await saveCartToPrefs(updatedCart);
+    }
   }
 
   void removeFromCart(ProductModel product) async {

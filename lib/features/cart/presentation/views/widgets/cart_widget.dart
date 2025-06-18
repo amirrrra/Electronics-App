@@ -1,14 +1,16 @@
 import 'package:electronics_app/core/utils/app_colors.dart';
 import 'package:electronics_app/core/utils/app_styles.dart';
+import 'package:electronics_app/features/home/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class CartWidget extends StatelessWidget {
-  const CartWidget({super.key});
+  final ProductModel product;
+  const CartWidget({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-      key: Key('name'),
+      key: Key(product.id.toString()),
       direction: DismissDirection.endToStart,
       background: Container(
         alignment: Alignment.centerRight,
@@ -19,7 +21,6 @@ class CartWidget extends StatelessWidget {
       onDismissed: (direction) {},
       child: Container(
         color: AppColors.white,
-        // padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Row(
           children: [
             ClipOval(

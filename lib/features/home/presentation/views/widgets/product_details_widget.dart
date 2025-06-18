@@ -65,7 +65,7 @@ class ProductDetailsWidget extends StatelessWidget {
                   spacing: 12,
                   children: [
                     QuantitySelectorWidget(),
-                    Expanded(child: AddToCartButtonWidget()),
+                    Expanded(child: AddToCartButtonWidget(product: product,)),
                   ],
                 ),
               ],

@@ -1,5 +1,4 @@
 import 'package:electronics_app/core/utils/app_colors.dart';
-import 'package:electronics_app/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -24,40 +23,37 @@ class _CarouselWidgetState extends State<CarouselWidget> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: Constants.horizPadding20,
-        child: Column(
-          spacing: 16,
-          children: [
-            CarouselSlider.builder(
-              itemCount: imageUrls.length,
-              options: CarouselOptions(
-                height: 250,
-                viewportFraction: 1.0,
-                onPageChanged: (index, reason) {
-                  setState(() => activeIndex = index);
-                },
-              ),
-              itemBuilder: (context, index, realIndex) {
-                final imageUrl = imageUrls[index];
-                return SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: Image.network(imageUrl, fit: BoxFit.cover),
-                );
+      child: Column(
+        spacing: 16,
+        children: [
+          CarouselSlider.builder(
+            itemCount: imageUrls.length,
+            options: CarouselOptions(
+              height: 250,
+              viewportFraction: 1.0,
+              onPageChanged: (index, reason) {
+                setState(() => activeIndex = index);
               },
             ),
-            AnimatedSmoothIndicator(
-              activeIndex: activeIndex,
-              count: imageUrls.length,
-              effect: WormEffect(
-                dotWidth: 10,
-                dotHeight: 10,
-                activeDotColor: AppColors.primaryColor,
-                dotColor: Colors.grey.shade300,
-              ),
+            itemBuilder: (context, index, realIndex) {
+              final imageUrl = imageUrls[index];
+              return SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Image.network(imageUrl, fit: BoxFit.cover),
+              );
+            },
+          ),
+          AnimatedSmoothIndicator(
+            activeIndex: activeIndex,
+            count: imageUrls.length,
+            effect: WormEffect(
+              dotWidth: 10,
+              dotHeight: 10,
+              activeDotColor: AppColors.primaryColor,
+              dotColor: Colors.grey.shade300,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:electronics_app/core/utils/app_routes.dart';
 import 'package:electronics_app/core/utils/constants.dart';
 import 'package:electronics_app/features/home/presentation/views/widgets/category_builder_widget.dart';
 import 'package:electronics_app/features/home/presentation/views/widgets/products_builder_widget.dart';
+import 'package:electronics_app/features/search/presentation/views/widgets/search_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'widgets/carousel_widget.dart';
 
@@ -18,14 +19,17 @@ class HomeView extends StatelessWidget {
             slivers: [
               SliverToBoxAdapter(
                 child: Column(
-                  spacing: 32,
+                  spacing: 16,
                   children: [
-                    const SizedBox(height: 20),
-                    TextButton(onPressed: () {
-                       Navigator.pushNamed(context, AppRoutes.profile);
-                    }, child: Text('data')),
+                    const SizedBox(),
+                    SearchFieldWidget(
+                      onTap: () =>
+                          Navigator.pushNamed(context, AppRoutes.search),
+                    ),
                     CarouselWidget(),
+                    const SizedBox(height: 8),
                     CategoryBuilderWidget(),
+                    const SizedBox(height: 8),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20),
                       child: Align(
